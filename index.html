@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" integrity="sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="assets/css/global.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <img src="assets/img/Pokemon.svg" alt="logo">
+    </header>
+    <main class="main">
+        <section class="pokemon-search">
+            <div class="search-painel">
+                <h2 class="labelsearch">Search for your Pokémon here</h2>
+                <input type="text" id="inputPokemonName" class="inputPokemonName" placeholder="Enter your pokemon's name"/>
+                <input type="button" id="buttonSearch" class="buttonSearch" value="Search"/>
+            </div>
+        </section>
+        <section class="pokemons-content">
+            <h2 class="titlePokedex">Pokedex</h2>
+            <ol id="pokemonsList" class="pokemons">
+                <!-- ... -->
+            </ol>
+        </section>
+    </main>
+
+    <script src="assets/js/utils/PokeApi.js"></script>
+    <script src="assets/js/models/Pokemon.js"></script>
+    
+    <script src="assets/js/Main.js"></script>
+</body>
+</html>
