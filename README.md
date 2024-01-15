@@ -7,5 +7,5 @@
   <img src="https://github.com/GuilhermePMedeiros/pokedex/assets/74070432/dc650041-9fc7-4028-a53c-3eb04056a2bb" alt="home">
 </div>
 <div align="center">
-  <img src="https://github.com/GuilhermePMedeiros/pokedex/assets/74070432/c42c0a67-0947-4c00-948b-77840ef9a08c" alt="home">
+  <img src="https://github.com/GuilhermePMedeiros/pokedex/assets/74070432/2c01d6e2-7207-4e1e-9751-47132f54d05c" alt="home">
 </div>
