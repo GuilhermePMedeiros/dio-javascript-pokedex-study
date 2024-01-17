@@ -4,6 +4,7 @@ const namePokemon = document.querySelector("#namePokemon");
 const typesListPokemon = document.querySelector("#typesListPokemon");
 const abilitiesListPokemon = document.querySelector("#abilitiesListPokemon");
 const locationsListPokemon = document.querySelector("#locationsListPokemon");
+const detailsContainer = document.querySelector("#detailsContainer");
 
 function getParameter(){
     const params = new URLSearchParams(window.location.search);
@@ -13,13 +14,16 @@ function getParameter(){
 }
 
 function converterPokemonJsonToModel(pokemonJson){
-    const pokemon = new Pokemon();
-    
-    pokemon.idNumber = pokemonJson.id;
-    pokemon.name = pokemonJson.name;
-    pokemon.photo = pokemonJson.sprites.other.dream_world.front_default;
-    pokemon.types = pokemonJson.types;
-    pokemon.abilities = pokemonJson.abilities;
+    let pokemon = new Pokemon();
+    if (isFill(pokemonJson.id)){
+        pokemon.idNumber = pokemonJson.id;
+        pokemon.name = pokemonJson.name;
+        pokemon.photo = pokemonJson.sprites.other.dream_world.front_default;
+        pokemon.types = pokemonJson.types;
+        pokemon.abilities = pokemonJson.abilities;
+    } else{
+        pokemon = null;
+    }
 
     return pokemon;
 }
@@ -28,12 +32,31 @@ function getPokemonByNameOrId(nameOrId){
     const url = `https://pokeapi.co/api/v2/pokemon/${nameOrId}`;
     
     fetch(url)
-        .then((response) => response.json())
+        .then((response) => 
+        { 
+            if(response.status > 399){
+                fillNotFound();
+            } else {
+                return response.json()
+            }
+        })
         .then((pokemonJson) => converterPokemonJsonToModel(pokemonJson))
         .then((pokemon) => {
             fillDetailsPokemon(pokemon);
         })
         .catch((error) => console.error(error));
+}
+
+function fillNotFound() {
+    detailsContainer.innerHTML = `
+    <div class="not-found-pokemon">
+        Pokemon not found
+    </div>
+    `;
+}
+
+function isFill(obj) {
+    return (!!Object.values(obj).length || !!Object.keys(obj).length) || obj !== null ;    
 }
 
 function convertertypesToLi(pokemon){
@@ -86,7 +109,9 @@ function getLocationPokemon(idPokemom){
 }
 
 function fillDetailsPokemon(pokemon){
-    imagePokemon.src = pokemon.photo;
+    if(isFill(pokemon.photo)){
+        imagePokemon.src= pokemon.photo;
+    };
     
     namePokemon.innerHTML = pokemon.name; 
     typesListPokemon.innerHTML = convertertypesToLi(pokemon);

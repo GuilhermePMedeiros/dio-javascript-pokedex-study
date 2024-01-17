@@ -70,12 +70,14 @@ function loadMorePokemons(){
     getPokemonsList(pokemonsSize); 
 }
 
+function isFill(obj) {
+    return ;    
+}
+
 buttonSearch.addEventListener('click', (e) => {
     let nameOrId = inputPokemonName.value;
-    let isNotNull = nameOrId !== null 
-        && nameOrId !== undefined;
 
-    if (isNotNull){
+    if (nameOrId){
         if(isNaN(nameOrId)){
             getPokemonByNameOrId(nameOrId.toLowerCase());
         } else {
