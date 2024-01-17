@@ -59,9 +59,15 @@ function converterAbilitiesToLi(pokemon){
 function converterLocationToLi(locationNamesList){
     let locationsHtmlli = "";
 
-    locationNamesList.forEach(location => {
-        locationsHtmlli += `<li class="location-pokemon-li"> ${location} </li>`
-    });
+    let isFill = Object.keys(locationNamesList).length !== 0;
+
+    if (isFill){
+        locationNamesList.forEach(location => {
+            locationsHtmlli += `<li class="location-pokemon-li"> ${location} </li>`
+        });
+    } else{
+        locationsHtmlli += `<li class="location-pokemon-li">Pokemon without registered location</li>`;
+    }
 
     return locationsHtmlli;
 }
